@@ -3,6 +3,7 @@ CREATE DATABASE `hr`;
 USE `hr`;
 
 
+
 CREATE TABLE `offices` (
   `office_id` int(11) NOT NULL,
   `address` varchar(50) NOT NULL,
