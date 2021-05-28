@@ -16,17 +16,16 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import me.fevvelasquez.jdbc.api.dao.daoe.DAOException;
-import me.fevvelasquez.jdbc.api.dao.daoi.DAO;
+import me.fevvelasquez.jdbc.api.dao.daoi.EmployeeDAOI;
 import me.fevvelasquez.jdbc.api.dao.model.Employee;
 
 /**
  * DAO for {@link Employee} model class.
  * 
- * @version 0.2.0. Creating Data Access Objects to implement CRUD to the
- *          database tables.
+ * @version 0.3. Creating singleton DAOManager to perform DAO operations.
  * @author fevvelasquez@gmail.com
  */
-public class EmployeeDAO implements DAO<Employee, Integer> {
+class EmployeeDAO implements EmployeeDAOI {
 	private static final Logger logger = Logger.getLogger(EmployeeDAO.class.getName());
 	private static final String SQL_INSERT = "INSERT INTO employees(employee_id, first_name, last_name, job_title, salary, reports_to, office_id) VALUES(?,?,?,?,?,?,?)";
 	private static final String SQL_UPDATE = "UPDATE employees SET first_name=?, last_name=?, job_title=?, salary=?, reports_to=?, office_id=? WHERE employee_id=?";
@@ -157,7 +156,7 @@ public class EmployeeDAO implements DAO<Employee, Integer> {
 		String jobTitle = resultSet.getString("job_title");
 		Integer salary = resultSet.getInt("salary");
 		Integer reportsTo = resultSet.getInt("reports_to");
-		reportsTo = (reportsTo == 0) ? null : reportsTo;
+		reportsTo = (resultSet.wasNull()) ? null : reportsTo;
 		Integer officeId = resultSet.getInt("office_id");
 
 		return new Employee(employeeId, firstName, lastName, jobTitle, salary, reportsTo, officeId);

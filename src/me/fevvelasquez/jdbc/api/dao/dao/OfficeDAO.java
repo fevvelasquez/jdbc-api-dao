@@ -15,17 +15,16 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import me.fevvelasquez.jdbc.api.dao.daoe.DAOException;
-import me.fevvelasquez.jdbc.api.dao.daoi.DAO;
+import me.fevvelasquez.jdbc.api.dao.daoi.OfficeDAOI;
 import me.fevvelasquez.jdbc.api.dao.model.Office;
 
 /**
  * DAO for {@link Office} model class.
  * 
- * @version 0.2.0. Creating Data Access Objects to implement CRUD to the
- *          database tables.
+ * @version  0.3. Creating singleton DAOManager to perform DAO operations.
  * @author fevvelasquez@gmail.com
  */
-public class OfficeDAO implements DAO<Office, Integer> {
+class OfficeDAO implements OfficeDAOI {
 	private static final Logger logger = Logger.getLogger(OfficeDAO.class.getName());
 
 	private static final String SQL_INSERT = "INSERT INTO offices(office_id, address, city, state) VALUES(?,?,?,?)";
