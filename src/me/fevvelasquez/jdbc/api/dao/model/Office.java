@@ -9,7 +9,8 @@ package me.fevvelasquez.jdbc.api.dao.model;
 /**
  * The model class that represents the {@code offices} table.
  * 
- * @version 0.1.0. Creating model objects to represent database tables.
+ * @version 0.2.0. Creating Data Access Objects to implement CRUD to the
+ *          database tables.
  * @author fevvelasquez@gmail.com
  */
 public class Office {
